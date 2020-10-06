@@ -158,37 +158,56 @@ The next step is to import the example website so you do not have to build it
 yourself from scratch. . . here we go!
 
 
-1. Open the file [website.txt](website.txt). The file is provided in the Github repository
-You can open it with any text editor installed on your computer. When opening it, it will look most probably weird and not understandable. don’t worry. This is why we use Node-Red, so we don’t need to understand the coding language.
+1. Copy in the pre-created flow by copying the text in the link [https://raw.githubusercontent.com/SweetJenn23/Code-ThinkzOSAPI/main/NodeRedFlow](https://raw.githubusercontent.com/SweetJenn23/Code-ThinkzOSAPI/main/NodeRedFlow).
 
 
+2. Go back to your Node-RED environment and select the hamburger menu on the upper right corner.Select **Import**. This opens a screen where you can paste the code. You will see the code appearing in the pink colored middle section.![](img/ImportFlow.png)
 
-3.2 Please open the file an select all the text(pressing ctrl +a) and then copy (ctrl + c).
+3. Press **Import**.
 
-3.3 Go back to your Node-Red environment and select the hamburger menu on the upper right corner. This opens the menu we already used.
-Select “ **Import** ”.
-This opens a screen where you can “paste” the code from the website.txt. 
-Paste the code with ctrl + v. Now you will see the code appearing in the pink colored middle section.
-
-![](img/ImportFlow.png)
-
-3.4 Press “ **Import** ”.
-
-3.5 Press the **“deploy”** button to save and activate the flow.
-
-The Nodes are used to build the website which I have showed at the beginning. The
-white blocks are text fields to explain what the nodes below do. Take a moment to
-see how it is related to the website.
-
+4. In the upper right hand corner, select the **Deploy** button to save and activate the flow.
 ![](img/FlowDeploy.png)
 
-Tip: In order to see the webpage you need the same internet address as used for
-your Node-Red environment **BUT** instead of having the **"/ red"** at the end use **"/ui"**. UI means User Interface. The URL should look something like this:
+5. To see our dashboard website, we will need to open another browser or tab in a browser. To do this, in the tray on the right side, we will select the **Dashboard** icon. In the Dashboard tray, there is a Share or Open link icon in the top right corner. Click the **Open link** icon. ![](img/DashboardUI.png)
+
+Let's try out our work!
+
+### Making API calls to z/OS from containers
+
+1. Go to the browser tab that shows your Node-RED flow. We are going to add a couple of nodes to make sure our API is working and understand what is happening.![Open your Node-RED flow.](img/Flow.png)
+
+2. Open the the **http request** node next to *Show Catalog items*. Review the URL to make sure it matches the image below. Select **Done**. ![Review the HTTP details.](img/ShowCatalogItemsHTTP.png)
+
+3. Open the **http request** node next to the *Enter item to search for* node. Review the URL and all other details to make sure it matches the image below. Select **Done**. ![Review the HTTTP details.](img/SearchHTTP.png)
+
+4. To test our flow, we will add in a **Debug** node and **Inject** node. You can find the nodes by expanding the *Common* tray on the left hand side. They are the first two nodes listed.![Find the nodes.](img/Nodes.png)
+
+5. Drag a **Debug** and **Inject** node onto your flow. Connect the **Inject** node to the left side or input side of the first **http request** node by clicking on the **Inject** node output terminal and dragging to the input terminal of **http request**. Connect the **Debug** node to the right side or the output side of the same **http request** node. Click **Deploy** to save and activate the flow. ![Insert and connect the Debug and Inject nodes.](img/NewNodes.png)
+
+6. Select the gray box on the left side of the **Inject** node to manually call the API defined in the HTTP node. Select the **Debug** icon in the tray on the right side to see the output from the **Debug** node.![Inject data to call the API.](img/Inject.png)
+	**Note:** The content of the message shown in debug isn't very pretty! That is exactly what Node-RED is getting back from z/OS through the API call. This isn't particularly useful.
+	
+7. In the left had tool tray, expand the **parser** section and hover over the **JSON** node. Node-RED comes with a node that can help us out! Notice that the **JSON** node is already in your flow.![Hover over JSON node.](img/Parser.png)
+
+8. Delete the connection between your **Debug** node and the **http request** node by clicking on the line and pressing your **Delete** key. Create a connection between the **Debug** node input terminal (left side) and output ternminal (right side) of the **JSON** node by clicking on the input terminal of **Debug** and dragging to the output terminal of **JSON**. Click **Deploy**. ![Connect the Debug node to the JSON node.](img/JSONDebug.png)
+
+9. Once again, the select the gray box on the left side of the **Inject** node to manually call the API. This time in the **Debug** tray, you'll see what the output looks like after it has been passed through the JSON node.![View the parsed JSON.](img/ParsedJSON.png)
+
+10. This still isn't overly helpful as far as readability. Once again, Node-RED has a helpful **template** node to help us organize the data. Double click on the **orange template** node in your flow. In this node, you'll see that we've created a table using the `<table>` tag. We then check to see if particular fields are returned in the JSON that we are interested in using the `{{#<fieldname>}}{{/<fieldname>}}`. We also created a table row with data using `<tr><td></td></tr>`. Click **Done**.![](img/OrangeTemplate.png)
+
+11. Delete the connection from the **JSON** node to the **Debug** node by clicking on it and using your **Delete** key. We will now connect the input terminal of the **Debug** node to the output terminal of the orange **template** node. Click **Deploy** to save and activate your changes. ![](img/TemplateDebug.png)
+
+12. Once again, we will use our **Inject** node to see the output from **Debug**. Click the gray square on the left side of the **Inject** node. Review the **Debug** output on the rightside. This will be much more useful! ![](img/TemplateOutput.png)
+
+	**Note:** We have now gone through all of the steps to work with the API response in Node-RED. Because we know what the responses will look like, we can use the same **JSON** and **template** nodes to parse and display the data for both API requests.
+	
+13. Double click on the blue **template** node. This is a Dashboard template that allows us to display the data to the dashboard UI. We are using a simple line of HTML to display the data and have selected to allow input to be passed through. Click **Done**. ![](img/Dashboard template.png)
+
+14. Find your Dashboard UI open in another browser tab. Click the **Show Catalog Items** button. This button initiates an API call to CICS running on z/OS to find out which items are instock. This will show our pretty display from the prior steps.![Click Show Catalog Items.](img/ShowCatalogItems.png)
+
+15. We can also search for a specific item. When we hit enter after typing in something to search for, this makes an API Get call to CICS to search for particular item. In the text field, type in `Paper` and hit **Enter** on your keyboard. **Note:** Capitalization does matter when searching. This is the second API in action but still using the same nodes to display the information. ![Search for an item.](img/Search.png)
 
 
-Node-Red environment-   **http://node-red-xxxxxxxx.mybluemix.net/red/**
-
-Node-Red website-       **http://node-red-xxxxxxxxx.mybluemix.net/ui/**
-
+Congratulations! You've now worked with an API in a container talking to applications running on z/OS!
 
 
