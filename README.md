@@ -1,20 +1,10 @@
-# Building your own website with Node-Red
+# Restful interactions with z/OS from containers
 
-We have created a website which you can use to create a simple website for your own company. In this exercise,
-you will learn how it is built and how you can change the layout. 
+In this workshop, you will work with Node-RED. You will have the option to run Node-RED in IBM Cloud as a service or through Docker on IBM Cloud. We have created a website through the Node-RED dashboard nodes to interact with z/OS.
 
-The sample you will start off with was made for our company idea, ReutiliZe. The website looks like this. ![ReutilizeWebsite](img/website.png)
+Once you've imported your flow into Node-RED you'll be working with a website like the one shown below. ![Node-RED Website](img/website.png)
 
-In the image above, make note of the following:
-
-* On the top horizontal bar, you will find the name and logo of our company.
-* Below on the main site there are 3 sections.
-  * Column 1: vertical menu buttons
-  * Column 2: input form
-  * Column 3: A search form with the output screen.
-
-We are providing you with step-by-step directions to create this website for your. Just follow the actions
-below.
+We are providing you with step-by-step directions to create this website for your. Just follow the actions below.
 
 ## Create a Node-Red service on IBM Cloud
 Watch the video installing Node-red and follow the steps yourself.
