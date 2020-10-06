@@ -133,4 +133,62 @@ You are now setup and ready for the next section!
 
 You are now setup and ready for the next section!
 
+## Work in Node-RED
+In this section, we will install the additional Node-RED nodes we need for our website and then import a flow that has been configured to communicate with z/OS.
+
+### Install additional nodes
+
+1. Open the hamburger menu on the upper right corner(1). This opens a menu like the one shown below. Choose the option **Manage palette** (2). ![Select Manage palette.](img/ManagePalette.png)
+
+	Note: Manage Palette opens a screen where you can find all the Nodes which are installed and an option to search and install additional Nodes.
+
+2. Select the **Install** tab. In the search field, type `dashboard`. This gives you all the nodes and node collections available with the name dashboard. Select the one called **Node-Red-Dashboard**. Select **Install** to the right of it to install the nodes. ![Install dashboard nodes.](img/InstallDashboardNode.png)
+
+
+	**Note:** Some additional Nodes are being installed. This may take up to one minute. Please note that in some occasions a red error will occur saying that the installation has failed. You need to try again until you get a large green message that the installation was successful. This is a bug which can happen sometimes depending on your location.
+
+3. Close the menu and return to the main screen. Inspect the tool tray on the left side
+of the screen and look for the nodes installed under **dashboard** . ![](img/DashboardNodes.png)
+
+	**Note:** The Dashboard Nodes are being used to build a graphical screen which you can use to interact. This will be our website. I have created the example website for you which uses these nodes.
+
+### Import existing code
+
+The next step is to import the example website so you do not have to build it
+yourself from scratch. . . here we go!
+
+
+1. Open the file [website.txt](website.txt). The file is provided in the Github repository
+You can open it with any text editor installed on your computer. When opening it, it will look most probably weird and not understandable. don’t worry. This is why we use Node-Red, so we don’t need to understand the coding language.
+
+
+
+3.2 Please open the file an select all the text(pressing ctrl +a) and then copy (ctrl + c).
+
+3.3 Go back to your Node-Red environment and select the hamburger menu on the upper right corner. This opens the menu we already used.
+Select “ **Import** ”.
+This opens a screen where you can “paste” the code from the website.txt. 
+Paste the code with ctrl + v. Now you will see the code appearing in the pink colored middle section.
+
+![](img/ImportFlow.png)
+
+3.4 Press “ **Import** ”.
+
+3.5 Press the **“deploy”** button to save and activate the flow.
+
+The Nodes are used to build the website which I have showed at the beginning. The
+white blocks are text fields to explain what the nodes below do. Take a moment to
+see how it is related to the website.
+
+![](img/FlowDeploy.png)
+
+Tip: In order to see the webpage you need the same internet address as used for
+your Node-Red environment **BUT** instead of having the **"/ red"** at the end use **"/ui"**. UI means User Interface. The URL should look something like this:
+
+
+Node-Red environment-   **http://node-red-xxxxxxxx.mybluemix.net/red/**
+
+Node-Red website-       **http://node-red-xxxxxxxxx.mybluemix.net/ui/**
+
+
 
