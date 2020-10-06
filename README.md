@@ -75,7 +75,11 @@ start command:   npm start --cache /data/.npm -- --userDir /data
 
 * In a browser, open IBM Cloud and **select the dashboard icon** and **click on Cloud Foundry apps**.![View service.](img/DashboardServices.png)
 
-* You should now see your service running like the image shown below. ![Cloud Foundry app.](img/NodeRedCFService.png)
+* Click on your service from the list like the image shown below. ![Cloud Foundry app.](img/NodeRedCFService.png)
+
+3. To access Node-RED, select **Visit App URL** from the service details page. ![Click Visit App URL.](img/AppURL.png)
+
+You are now setup and ready for the next section!
 
 
 
@@ -124,7 +128,9 @@ start command:   npm start --cache /data/.npm -- --userDir /data
 
 14. Now you see the dashboard of your Node-Red app. Now select **Visit app URL**.![](img/AppDashboard.png)
 
-15. Now you are in your Node-Red app. When opening this the first time you will get some options to set an User ID and Password. Follow the steps until you get the Node-Red landing page with the button **Go to your Node-RED editor**.
+15. Now you are in your Node-Red app. When opening this the first time you will get some options to set an User ID and Password. Follow the steps until you get the Node-Red landing page with the button **Go to your Node-RED flow editor**.
 ![](img/NodeRedFirstTime.png)
+
+You are now setup and ready for the next section!
 
 
