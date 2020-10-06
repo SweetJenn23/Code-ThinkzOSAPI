@@ -1,6 +1,6 @@
 # Restful interactions with z/OS from containers
 
-In this workshop, you will work with Node-RED. You will have the option to run Node-RED in IBM Cloud as a service or through Docker on IBM Cloud. We have created a website through the Node-RED dashboard nodes to interact with z/OS.
+In this workshop, you will work with Node-RED. You will have the option to run Node-RED in IBM Cloud as a service or through Docker on IBM Cloud. We have created a website through the Node-RED dashboard nodes to interact with z/OS. Our environment looks like this: ![](img/Architecture.png)
 
 Once you've imported your flow into Node-RED you'll be working with a website like the one shown below. ![Node-RED Website](img/website.png)
 
@@ -173,6 +173,7 @@ yourself from scratch. . . here we go!
 Let's try out our work!
 
 ### Making API calls to z/OS from containers
+If we didn't use an API to talk to z/OS, we would need to figure out how to interact with the terminal to send data to the application. The application running on z/OS is a catalog. Our API will allow us to list the items in the catalog or search for a particular item. Here is what the application looks like running on z/OS.![](img/CICS.png)
 
 1. Go to the browser tab that shows your Node-RED flow. We are going to add a couple of nodes to make sure our API is working and understand what is happening.![Open your Node-RED flow.](img/Flow.png)
 
