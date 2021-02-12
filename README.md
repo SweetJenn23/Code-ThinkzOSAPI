@@ -177,9 +177,9 @@ If we didn't use an API to talk to z/OS, we would need to figure out how to inte
 
 1. Go to the browser tab that shows your Node-RED flow. We are going to add a couple of nodes to make sure our API is working and understand what is happening.![Open your Node-RED flow.](img/Flow.png)
 
-2. Open the the **http request** node next to *Show Catalog items*. Review the URL to make sure it matches the image below. Select **Done**. ![Review the HTTP details.](img/ShowCatalogItemsHTTP.png)
+2. Open the the **http request** node next to *Show Catalog items*. Update the URL to the one provided in the session. Select **Done**. ![Review the HTTP details.](img/ShowCatalogItemsHTTP.png)
 
-3. Open the **http request** node next to the *Enter item to search for* node. Review the URL and all other details to make sure it matches the image below. Select **Done**. ![Review the HTTTP details.](img/SearchHTTP.png)
+3. Open the **http request** node next to the *Enter item to search for* node. Update the URL to the one provided in the session. Select **Done**. ![Review the HTTTP details.](img/SearchHTTP.png)
 
 4. To test our flow, we will add in a **Debug** node and **Inject** node. You can find the nodes by expanding the *Common* tray on the left hand side. They are the first two nodes listed.![Find the nodes.](img/Nodes.png)
 
